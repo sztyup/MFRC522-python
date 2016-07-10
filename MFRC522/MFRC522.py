@@ -132,7 +132,9 @@ class Reader:
         self.spi.open(spi_bus, spi_device)
         self.reset_pin = reset_pin
 
-        GPIO.setmode(GPIO.BOARD)
+        if hasattr(GPIO, "setmode"):
+            GPIO.setmode(GPIO.BOARD)
+
         GPIO.setup(self.reset_pin, GPIO.OUT)
         GPIO.output(self.reset_pin, GPIO.HIGH)
         self.MFRC522_Init()
@@ -174,7 +176,7 @@ class Reader:
 
         The spi response is garbage for for the first byte, the requested data in the second byte
         """
-        val = self.spi.transfer((((addr << 1) & 0x7E) | 0x80, 0))
+        val = self.spi.xfer([((addr << 1) & 0x7E) | 0x80, 0])
         return val[1]
 
     def SetBitMask(self, reg, mask):
