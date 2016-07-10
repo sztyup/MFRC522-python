@@ -1,6 +1,7 @@
 from setuptools import setup
 
 requirements = ['spidev>=3.2']
+dependency_links = []
 # We need to bring a GPIO library, which will be platform dependent
 # Platform determining code uses /proc/cpuinfo, based on
 # https://github.com/rec/echomesh/blob/master/code/python/echomesh/base/Platform.py
@@ -35,20 +36,24 @@ if IS_LINUX:
             pass
 
 GPIO_MAP = {
-    RASPBERRY_PI: "RPI.GPIO>=0.6",
-    CHIP: "CHIP-IO>=0.0.7"
+    RASPBERRY_PI: ("RPI.GPIO>=0.6", None),
+    CHIP: ("CHIP_IO>=0.0.7", "git+https://github.com/xtacocorex/CHIP_IO.git#egg=chip_io-0.0.9")
 }
 
-gpio_library = GPIO_MAP.get(PLATFORM)
+gpio_library, dependency_link = GPIO_MAP.get(PLATFORM)
 if gpio_library is None:
     WARNING = '\033[1m\033[91m'
     ENDC = '\033[0m'
     print WARNING + "Warning: could not identify platform, so cannot import GPIO Library." + ENDC
 else:
     requirements.append(gpio_library)
+    if dependency_link:
+        dependency_links.append(dependency_link)
 
+print "Also need to install: ", requirements, dependency_links
 setup(name='MFRC522',
-  version='0.8',
+  version='0.8.1',
   packages=['MFRC522'],
   install_requires=requirements,
+  dependency_links=dependency_links,
 )
