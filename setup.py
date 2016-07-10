@@ -37,16 +37,17 @@ if IS_LINUX:
 
 GPIO_MAP = {
     RASPBERRY_PI: ("RPI.GPIO>=0.6", None),
-    CHIP: ("CHIP_IO>=0.0.7", "git+https://github.com/xtacocorex/CHIP_IO.git#egg=chip_io-0.0.9")
+    CHIP: ("CHIP_IO>=0.0.7", "git+https://github.com/xtacocorex/CHIP_IO.git#egg=chip_io-0.0.9"),
 }
 
-gpio_library, dependency_link = GPIO_MAP.get(PLATFORM)
+gpio_library = GPIO_MAP.get(PLATFORM)
 if gpio_library is None:
     WARNING = '\033[1m\033[91m'
     ENDC = '\033[0m'
     print WARNING + "Warning: could not identify platform, so cannot import GPIO Library." + ENDC
 else:
-    requirements.append(gpio_library)
+    requirement, dependency_link = gpio_library
+    requirements.append(requirement)
     if dependency_link:
         dependency_links.append(dependency_link)
 

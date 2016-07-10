@@ -7,6 +7,13 @@ This is a Python port of the example code for the NFC module MF522-AN.
 
 Updated by @brettcvz to be a bit more generic, and be importable into other projects
 
+##Installation
+Run the following command:
+```
+pip install git+https://github.com/brettcvz/MFRC522-python.git --process-dependency-links
+```
+Note that the depency link command is required for CHIP support, because the CHIP_IO repo is not on PyPI
+
 ##Examples
 This repository includes a couple of examples showing how to read, write, and dump data from a chip. They are thoroughly commented, and should be easy to understand.
 
