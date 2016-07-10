@@ -1,19 +1,19 @@
 MFRC522-python
 ==============
 
-A small class to interface with the NFC reader Module MFRC522 on the Raspberry Pi.
+A small class to interface with the NFC reader Module MFRC522 via SPI.
 
 This is a Python port of the example code for the NFC module MF522-AN.
 
-##Requirements
-This code requires you to have SPI-Py installed from the following repository:
-https://github.com/lthiery/SPI-Py
+Updated by @brettcvz to be a bit more generic, and be importable into other projects
 
 ##Examples
 This repository includes a couple of examples showing how to read, write, and dump data from a chip. They are thoroughly commented, and should be easy to understand.
 
-## Pins
-You can use [this](http://i.imgur.com/y7Fnvhq.png) image for reference.
+## Pins and setup
+In the general case, you need to hook up the MFRC522 via SPI and drive the RST pin HIGH when you would like to read or write RFID chips.
+
+For Rasperry Pi in specific, you can use [this](http://i.imgur.com/y7Fnvhq.png) image for reference.
 
 | Name | Pin # | Pin name   |
 |------|-------|------------|
