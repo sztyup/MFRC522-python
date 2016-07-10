@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 import RPi.GPIO as GPIO
-import MFRC522
+from MFRC522 import MFRC522
 import signal
 
 continue_reading = True
@@ -20,7 +20,7 @@ signal.signal(signal.SIGINT, end_read)
 
 # Create an object of the class MFRC522
 # Correct values for the Raspberry Pi
-MIFAREReader = MFRC522.MFRC522(0, 0, 22)
+MIFAREReader = MFRC522.Reader(0, 0, 22)
 
 # Welcome message
 print "Welcome to the MFRC522 data read example"

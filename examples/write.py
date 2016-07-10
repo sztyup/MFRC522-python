@@ -20,7 +20,7 @@ signal.signal(signal.SIGINT, end_read)
 
 # Create an object of the class MFRC522
 # Correct values for the Raspberry Pi
-MIFAREReader = MFRC522.MFRC522(0, 0, 22)
+MIFAREReader = MFRC522.Reader(0, 0, 22)
 
 # This loop keeps checking for chips. If one is near it will get the UID and authenticate
 while continue_reading:

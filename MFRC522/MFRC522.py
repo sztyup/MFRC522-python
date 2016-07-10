@@ -21,7 +21,7 @@ class StatusNotSuccessError(Exception):
     pass
 
 
-class MFRC522:
+class Reader:
     MAX_LEN = 16
 
     PCD_IDLE       = 0x00

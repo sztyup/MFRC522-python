@@ -53,7 +53,7 @@ else:
 
 print "Also need to install: ", requirements, dependency_links
 setup(name='MFRC522',
-  version='0.8.1',
+  version='0.8.2',
   packages=['MFRC522'],
   install_requires=requirements,
   dependency_links=dependency_links,
