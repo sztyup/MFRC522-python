@@ -41,7 +41,7 @@ GPIO_MAP = {
 
 gpio_library = GPIO_MAP.get(PLATFORM)
 if gpio_library is None:
-    WARNING = '\033[1m\033[93m'
+    WARNING = '\033[1m\033[91m'
     ENDC = '\033[0m'
     print WARNING + "Warning: could not identify platform, so cannot import GPIO Library." + ENDC
 else:
@@ -49,7 +49,6 @@ else:
 
 setup(name='MFRC522',
   version='0.8',
-  package_dir={'MFRC522': 'src'},
   packages=['MFRC522'],
   install_requires=requirements,
 )
