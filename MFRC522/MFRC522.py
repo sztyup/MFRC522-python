@@ -4,7 +4,11 @@
 try:
     import RPi.GPIO as GPIO
 except ImportError:
-    import CHIP_IO.GPIO as GPIO
+    try:
+        import CHIP_IO.GPIO as GPIO
+    except ImportError:
+        #Maybe there is another general GPIO package we can use?
+        import GPIO
 
 import spidev
 
