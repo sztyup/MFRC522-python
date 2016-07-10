@@ -49,7 +49,7 @@ else:
 
 setup(name='MFRC522',
   version='0.8',
-  package_dir={'': 'src'},
-  packages=[''],
+  package_dir={'MFRC522': 'src'},
+  packages=['MFRC522'],
   install_requires=requirements,
 )
