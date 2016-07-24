@@ -135,7 +135,11 @@ class Reader:
         if hasattr(GPIO, "setmode"):
             GPIO.setmode(GPIO.BOARD)
 
-        GPIO.setup(self.reset_pin, GPIO.OUT)
+        try:
+            GPIO.setup(self.reset_pin, GPIO.OUT)
+        except RuntimeError:
+            pass
+
         GPIO.output(self.reset_pin, GPIO.HIGH)
         self.MFRC522_Init()
 
