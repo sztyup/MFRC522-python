@@ -44,14 +44,14 @@ gpio_library = GPIO_MAP.get(PLATFORM)
 if gpio_library is None:
     WARNING = '\033[1m\033[91m'
     ENDC = '\033[0m'
-    print WARNING + "Warning: could not identify platform, so cannot import GPIO Library." + ENDC
+    print(WARNING + "Warning: could not identify platform, so cannot import GPIO Library." + ENDC)
 else:
     requirement, dependency_link = gpio_library
     requirements.append(requirement)
     if dependency_link:
         dependency_links.append(dependency_link)
 
-print "Also need to install: ", requirements, dependency_links
+print("Also need to install: ", requirements, dependency_links)
 setup(name='MFRC522',
   version='0.8.3',
   packages=['MFRC522'],
